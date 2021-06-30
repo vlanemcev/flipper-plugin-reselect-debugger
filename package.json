@@ -1,6 +1,6 @@
 {
   "$schema": "https://fbflipper.com/schemas/plugin-package/v2.json",
-  "name": "flipper-plugin-reselect-dev-tools",
+  "name": "flipper-plugin-reselect-debugger",
   "description": "Reselect Debugging Tools for React Native and Flipper",
   "repository": {
     "url": "https://github.com/vlanemcev/flipper-plugin-reselect-debugger",
@@ -9,8 +9,8 @@
   "homepage": "https://github.com/vlanemcev/flipper-plugin-reselect-debugger",
   "bugs": "https://github.com/vlanemcev/flipper-plugin-reselect-debugger/issues",
   "author": "Vladyslav Niemtsev <frontend.vlanemcev@gmail.com> (https://github.com/vlanemcev)",
-  "id": "reselect-dev-tools",
-  "version": "1.0.0",
+  "id": "reselect-debugger",
+  "version": "1.0.1",
   "pluginType": "client",
   "main": "dist/bundle.js",
   "flipperBundlerEntry": "src/index.tsx",
@@ -18,7 +18,7 @@
   "keywords": [
     "flipper-plugin",
     "reselect",
-    "reselect-dev-tools",
+    "reselect-debugger",
     "reselect-devtools",
     "reselect-tools"
   ],
@@ -42,11 +42,11 @@
     "@testing-library/react": "latest",
     "@types/cytoscape": "^3.14.15",
     "@types/jest": "latest",
+    "@types/lodash.isempty": "^4.4.6",
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "@typescript-eslint/eslint-plugin": "^4.28.1",
     "@typescript-eslint/parser": "^4.28.1",
-    "@types/lodash.isempty": "^4.4.6",
     "antd": "latest",
     "eslint": "^7.29.0",
     "eslint-config-prettier": "^8.3.0",
