@@ -1,0 +1,60 @@
+{
+  "$schema": "https://fbflipper.com/schemas/plugin-package/v2.json",
+  "name": "flipper-plugin-reselect-dev-tools",
+  "id": "reselect-dev-tools",
+  "version": "1.0.0",
+  "pluginType": "client",
+  "main": "dist/bundle.js",
+  "flipperBundlerEntry": "src/index.tsx",
+  "license": "MIT",
+  "keywords": [
+    "flipper-plugin",
+    "reselect",
+    "reselect-dev-tools",
+    "reselect-devtools",
+    "reselect-tools"
+  ],
+  "icon": "apps",
+  "title": "Reselect Debugger",
+  "scripts": {
+    "lint": "flipper-pkg lint",
+    "prepack": "flipper-pkg lint && flipper-pkg bundle",
+    "build": "flipper-pkg bundle",
+    "watch": "flipper-pkg bundle --watch",
+    "test": "jest --no-watchman",
+    "eslint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix"
+  },
+  "peerDependencies": {
+    "antd": "latest",
+    "flipper-plugin": "^0.95.0"
+  },
+  "devDependencies": {
+    "@babel/preset-react": "latest",
+    "@babel/preset-typescript": "latest",
+    "@testing-library/react": "latest",
+    "@types/cytoscape": "^3.14.15",
+    "@types/jest": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@typescript-eslint/eslint-plugin": "^4.28.1",
+    "@typescript-eslint/parser": "^4.28.1",
+    "antd": "latest",
+    "eslint": "^7.29.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-prettier": "^3.4.0",
+    "flipper-pkg": "latest",
+    "flipper-plugin": "latest",
+    "jest": "latest",
+    "prettier": "^2.3.2",
+    "typescript": "latest"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.6.2",
+    "@types/lodash.isempty": "^4.4.6",
+    "classnames": "^2.3.1",
+    "cytoscape": "^3.19.0",
+    "cytoscape-dagre": "^2.3.2",
+    "lodash.isempty": "^4.4.0"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "typeRoots": ["./src/@types", "./node_modules/@types"],
+    "target": "ES2017",
+    "module": "ES6",
+    "jsx": "react",
+    "sourceMap": true,
+    "noEmit": true,
+    "strict": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "removeComments": true,
+    "noImplicitAny": false,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+  },
+  "include": ["./src"],
+}
