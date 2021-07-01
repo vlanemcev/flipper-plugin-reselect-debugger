@@ -13,6 +13,7 @@
     "removeComments": true,
     "noImplicitAny": false,
     "strictNullChecks": true,
+    "skipLibCheck": true,
     "strictFunctionTypes": true,
   },
   "include": ["./src"],

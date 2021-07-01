@@ -8,10 +8,12 @@ import { GraphRepresentation } from './app/types';
 type Events = {
   setSelectorsGraph: GraphRepresentation;
   updateSelectorsGraph: GraphRepresentation;
+  resetSelectorsRecomputationCount: GraphRepresentation;
 };
 
 type Methods = {
   refreshSelectorsGraph: () => Promise<GraphRepresentation>;
+  resetSelectorsRecomputationCount: () => Promise<GraphRepresentation>;
 };
 
 export function plugin(client: PluginClient<Events, Methods>) {
@@ -19,6 +21,21 @@ export function plugin(client: PluginClient<Events, Methods>) {
     { nodes: {}, edges: [] },
     { persist: 'selectorsGraph' },
   );
+
+  const resetSelectorsRecomputation = async () => {
+    try {
+      if (client.isConnected) {
+        const updatedSelectrorsGraph = await client.send(
+          'resetSelectorsRecomputationCount',
+          undefined,
+        );
+
+        selectorsGraphState.set(updatedSelectrorsGraph);
+      }
+    } catch (error) {
+      console.error('Failed to retrieve refreshed selectors graphs: \n', error);
+    }
+  };
 
   const refreshSelectorsGraph = async () => {
     try {
@@ -37,6 +54,7 @@ export function plugin(client: PluginClient<Events, Methods>) {
 
   return {
     selectorsGraphState,
+    resetSelectorsRecomputation,
     refreshSelectorsGraph,
   };
 }

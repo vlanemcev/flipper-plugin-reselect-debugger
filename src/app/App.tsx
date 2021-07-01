@@ -13,6 +13,12 @@ const App = () => {
   const [selectedNodeId, setSelectedNodeId] = useState<string>();
   const [numberOfMostRecomputed, setNumberOfMostRecomputed] = useState<number>();
 
+  const onResetSelectorsRecomputation = useCallback(async () => {
+    setNumberOfMostRecomputed(0);
+
+    await instance.resetSelectorsRecomputation();
+  }, []);
+
   const onRefreshSelectorsGraph = useCallback(async () => {
     setSelectedNodeId('');
     setNumberOfMostRecomputed(0);
@@ -31,6 +37,7 @@ const App = () => {
         numberOfMostRecomputed={numberOfMostRecomputed}
         onSelectSelector={setSelectedNodeId}
         onSelectMostRecomputed={setNumberOfMostRecomputed}
+        onResetSelectorsRecomputation={onResetSelectorsRecomputation}
         onRefreshSelectorsGraph={onRefreshSelectorsGraph}
       />
       <SelectorGraph

@@ -3,7 +3,7 @@ import React, { useCallback } from 'react';
 import { Button, Select, Typography } from 'antd';
 import { Layout, Toolbar as FlipperToolbar, usePlugin, useValue } from 'flipper-plugin';
 
-import { AimOutlined, ReloadOutlined } from '@ant-design/icons';
+import { AimOutlined, HistoryOutlined, ReloadOutlined } from '@ant-design/icons';
 
 import { plugin } from '../../../index';
 
@@ -23,6 +23,7 @@ type ToolbarProps = {
   numberOfMostRecomputed?: number;
   onSelectSelector?: (selector: string) => void;
   onSelectMostRecomputed?: (numberOfNodes: number) => void;
+  onResetSelectorsRecomputation?: () => void;
   onRefreshSelectorsGraph?: () => void;
 };
 
@@ -31,6 +32,7 @@ const Toolbar: React.FC<ToolbarProps> = ({
   numberOfMostRecomputed,
   onSelectSelector,
   onSelectMostRecomputed,
+  onResetSelectorsRecomputation,
   onRefreshSelectorsGraph,
 }) => {
   const instance = usePlugin(plugin);
@@ -39,7 +41,7 @@ const Toolbar: React.FC<ToolbarProps> = ({
   const renderRightContent = useCallback(
     () => (
       <Layout.Horizontal gap={30}>
-        <Layout.Horizontal gap={10} center>
+        <Layout.Horizontal gap={20} center>
           <Text>Most Recomputed</Text>
           <Select
             value={numberOfMostRecomputed}
@@ -50,6 +52,13 @@ const Toolbar: React.FC<ToolbarProps> = ({
             options={numbersOptions}
           />
         </Layout.Horizontal>
+
+        <Button
+          icon={<HistoryOutlined width={15} height={15} />}
+          onClick={onResetSelectorsRecomputation}
+        >
+          Reset Recomputations
+        </Button>
 
         <Button icon={<ReloadOutlined width={15} height={15} />} onClick={onRefreshSelectorsGraph}>
           Refresh Selectors Graph
