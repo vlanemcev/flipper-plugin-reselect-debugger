@@ -8,6 +8,7 @@ import {
 } from 'cytoscape';
 import { Layout, usePlugin, useValue } from 'flipper-plugin';
 import isEmpty from 'lodash.isempty';
+import isNumber from 'lodash.isnumber';
 
 import { plugin } from '../../../index';
 import LegendItem from '../../components/LegendItem';
@@ -103,11 +104,11 @@ const SelectorGraph: React.FC<SelectorGraphProps> = ({
   );
 
   const highlightNMostRecomputed = useCallback((n?: number) => {
-    if (!n && n !== 0) {
+    resetCollectionStyles();
+
+    if (!isNumber(n) || n === 0) {
       return;
     }
-
-    resetCollectionStyles();
 
     if (cytosCore.current) {
       const recomputationBuckets = new Map();

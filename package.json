@@ -43,6 +43,7 @@
     "@types/cytoscape": "^3.14.15",
     "@types/jest": "latest",
     "@types/lodash.isempty": "^4.4.6",
+    "@types/lodash.isnumber": "^3.0.6",
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "@typescript-eslint/eslint-plugin": "^4.28.1",
@@ -63,6 +64,7 @@
     "classnames": "^2.3.1",
     "cytoscape": "^3.19.0",
     "cytoscape-dagre": "^2.3.2",
-    "lodash.isempty": "^4.4.0"
+    "lodash.isempty": "^4.4.0",
+    "lodash.isnumber": "^3.0.3"
   }
 }
