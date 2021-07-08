@@ -26,12 +26,19 @@ const SelectorInspector: React.FC<SelectorInspectorProps> = ({ selectedSelectorI
         level={3}
         style={{ color: Colors.defaultNode }}
         title={selectedSelectorID || undefined}
+        copyable={!!selectedSelectorID}
       >
         {selectedSelectorID ? selectedSelectorID : 'Choose Selector'}
       </Typography.Title>
 
       {selectorData && selectorData.recomputations === null ? (
         <Typography.Text style={{ color: Colors.selectedNode }}>Not Memoized</Typography.Text>
+      ) : null}
+
+      {selectorData && selectorData.outputIsStateDependentOnly === false ? (
+        <Typography.Text style={{ color: Colors.selectedNode }}>
+          Depends on external arguments
+        </Typography.Text>
       ) : null}
 
       <Divider />

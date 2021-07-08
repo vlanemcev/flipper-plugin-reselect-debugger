@@ -10,7 +10,7 @@
   "bugs": "https://github.com/vlanemcev/flipper-plugin-reselect-debugger/issues",
   "author": "Vladyslav Niemtsev <frontend.vlanemcev@gmail.com> (https://github.com/vlanemcev)",
   "id": "reselect-debugger",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "pluginType": "client",
   "main": "dist/bundle.js",
   "flipperBundlerEntry": "src/index.tsx",

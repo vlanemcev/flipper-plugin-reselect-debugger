@@ -175,14 +175,6 @@ const SelectorGraph: React.FC<SelectorGraphProps> = ({
     highlightNMostRecomputed(numberOfMostRecomputed);
   }, [numberOfMostRecomputed]);
 
-  useEffect(() => {
-    return () => {
-      if (cytosCore.current) {
-        cytosCore.current.destroy();
-      }
-    };
-  }, []);
-
   return (
     <Layout.Container grow padh="medium">
       <Layout.Horizontal padv="medium" gap>

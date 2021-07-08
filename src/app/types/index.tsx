@@ -9,6 +9,7 @@ export type GraphRepresentation = {
       recomputations: number | null;
       lastRecomputationReasone: string;
       selectorInputs: unknown[];
+      outputIsStateDependentOnly: boolean | null;
       selectorOutput: unknown;
       analyzingError: string;
     }
