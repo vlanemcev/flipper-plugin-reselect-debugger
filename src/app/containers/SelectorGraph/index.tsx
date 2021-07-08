@@ -8,7 +8,6 @@ import {
 } from 'cytoscape';
 import { Layout, usePlugin, useValue } from 'flipper-plugin';
 import isEmpty from 'lodash.isempty';
-import isNumber from 'lodash.isnumber';
 
 import { plugin } from '../../../index';
 import LegendItem from '../../components/LegendItem';
@@ -104,7 +103,7 @@ const SelectorGraph: React.FC<SelectorGraphProps> = ({
   );
 
   const highlightNMostRecomputed = useCallback((n?: number) => {
-    if (!isNumber(n)) {
+    if (typeof n !== 'number') {
       return;
     }
 
