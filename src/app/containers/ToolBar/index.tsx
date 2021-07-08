@@ -10,7 +10,7 @@ import { plugin } from '../../../index';
 const { Option } = Select;
 const { Text } = Typography;
 
-const numbersOptions = [0, 3, 5, 10];
+const numbersOptions = [0, 1, 2, 3, 5, 10];
 
 type ToolbarProps = {
   selectedSelectorId?: string;

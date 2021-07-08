@@ -104,9 +104,13 @@ const SelectorGraph: React.FC<SelectorGraphProps> = ({
   );
 
   const highlightNMostRecomputed = useCallback((n?: number) => {
+    if (!isNumber(n)) {
+      return;
+    }
+
     resetCollectionStyles();
 
-    if (!isNumber(n) || n === 0) {
+    if (n === 0) {
       return;
     }
 
@@ -172,8 +176,15 @@ const SelectorGraph: React.FC<SelectorGraphProps> = ({
     paintNodeSelection(selectedSelectorId, true);
   }, [selectedSelectorId]);
 
+  const isMounted = useRef(false);
   useEffect(() => {
-    highlightNMostRecomputed(numberOfMostRecomputed);
+    isMounted.current = true;
+  }, []);
+
+  useEffect(() => {
+    if (isMounted) {
+      highlightNMostRecomputed(numberOfMostRecomputed);
+    }
   }, [numberOfMostRecomputed]);
 
   return (
