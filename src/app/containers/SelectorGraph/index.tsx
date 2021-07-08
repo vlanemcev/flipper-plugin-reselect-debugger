@@ -103,11 +103,11 @@ const SelectorGraph: React.FC<SelectorGraphProps> = ({
   );
 
   const highlightNMostRecomputed = useCallback((n?: number) => {
-    resetCollectionStyles();
-
-    if (!n || n === 0) {
+    if (!n && n !== 0) {
       return;
     }
+
+    resetCollectionStyles();
 
     if (cytosCore.current) {
       const recomputationBuckets = new Map();

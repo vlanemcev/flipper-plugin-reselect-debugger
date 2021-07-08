@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 
-import { DetailSidebar, Layout, usePlugin, useLocalStorageState } from 'flipper-plugin';
+import { DetailSidebar, Layout, usePlugin, useLocalStorageState, batch } from 'flipper-plugin';
 
 import { plugin } from '../index';
 import SelectorGraph from './containers/SelectorGraph';
@@ -10,11 +10,13 @@ import Toolbar from './containers/ToolBar';
 const App = () => {
   const instance = usePlugin(plugin);
 
-  const [selectedNodeId, setSelectedNodeId] = useLocalStorageState<string>('selectedNodeId', '');
-  const [numberOfMostRecomputed, setNumberOfMostRecomputed] = useLocalStorageState<number>(
-    'numberOfMostRecomputed',
-    0,
+  const [selectedNodeId, setSelectedNodeId] = useLocalStorageState<string | undefined>(
+    'selectedNodeId',
+    undefined,
   );
+  const [numberOfMostRecomputed, setNumberOfMostRecomputed] = useLocalStorageState<
+    number | undefined
+  >('numberOfMostRecomputed', undefined);
 
   const onResetSelectorsRecomputation = useCallback(async () => {
     setNumberOfMostRecomputed(0);
@@ -23,8 +25,10 @@ const App = () => {
   }, []);
 
   const onRefreshSelectorsGraph = useCallback(async () => {
-    setSelectedNodeId('');
-    setNumberOfMostRecomputed(0);
+    batch(() => {
+      setNumberOfMostRecomputed(undefined);
+      setSelectedNodeId(undefined);
+    });
 
     await instance.refreshSelectorsGraph();
   }, []);
