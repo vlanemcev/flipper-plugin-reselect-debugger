@@ -1,6 +1,6 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 
-import { DetailSidebar, Layout, usePlugin, useLocalStorageState, batch } from 'flipper-plugin';
+import { DetailSidebar, Layout, usePlugin, useLocalStorageState } from 'flipper-plugin';
 
 import { plugin } from '../index';
 import SelectorGraph from './containers/SelectorGraph';
@@ -14,21 +14,18 @@ const App = () => {
     'selectedNodeId',
     undefined,
   );
-  const [numberOfMostRecomputed, setNumberOfMostRecomputed] = useLocalStorageState<
-    number | undefined
-  >('numberOfMostRecomputed', undefined);
+
+  const [numberOfMostRecomputed, setNumberOfMostRecomputed] = useState<number | undefined>();
 
   const onResetSelectorsRecomputation = useCallback(async () => {
-    setNumberOfMostRecomputed(0);
+    setNumberOfMostRecomputed(undefined);
 
     await instance.resetSelectorsRecomputation();
   }, []);
 
   const onRefreshSelectorsGraph = useCallback(async () => {
-    batch(() => {
-      setNumberOfMostRecomputed(undefined);
-      setSelectedNodeId(undefined);
-    });
+    setNumberOfMostRecomputed(undefined);
+    setSelectedNodeId(undefined);
 
     await instance.refreshSelectorsGraph();
   }, []);

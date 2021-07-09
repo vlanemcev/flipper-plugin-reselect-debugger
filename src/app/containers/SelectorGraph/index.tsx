@@ -172,19 +172,12 @@ const SelectorGraph: React.FC<SelectorGraphProps> = ({
   }, [selectorsGraphs]);
 
   useEffect(() => {
+    highlightNMostRecomputed(numberOfMostRecomputed);
+  }, [numberOfMostRecomputed]);
+
+  useEffect(() => {
     paintNodeSelection(selectedSelectorId, true);
   }, [selectedSelectorId]);
-
-  const isMounted = useRef(false);
-  useEffect(() => {
-    isMounted.current = true;
-  }, []);
-
-  useEffect(() => {
-    if (isMounted) {
-      highlightNMostRecomputed(numberOfMostRecomputed);
-    }
-  }, [numberOfMostRecomputed]);
 
   return (
     <Layout.Container grow padh="medium">
