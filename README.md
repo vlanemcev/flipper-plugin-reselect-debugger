@@ -10,6 +10,8 @@
 - Highlight Most Recomputed Selectors
 - Search by Selectors Graph
 
+![image](https://user-images.githubusercontent.com/26767564/125459840-cdec91d8-f55e-4e18-b58e-5ec42bcf2647.png)
+
 ## Get Started
 
 1. Install [reselect-debugger-flipper](https://github.com/vlanemcev/reselect-debugger-flipper) and `react-native-flipper` in your React Native app:
