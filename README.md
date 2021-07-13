@@ -34,10 +34,12 @@ const middlewares = [/* other middlewares */];
 
 const store = createStore(RootReducer, applyMiddleware(...middlewares));
 
-const reselectDebugger = require('reselect-debugger-flipper').default;
-reselectDebugger.configure({
-  selectors
-});
+if (__DEV__) {
+  const reselectDebugger = require('reselect-debugger-flipper');
+  reselectDebugger.configure({
+    selectors
+  });
+}
 
 return store;
 ```
@@ -65,13 +67,15 @@ const middlewares = [/* other middlewares */];
 
 const store = createStore(RootReducer, applyMiddleware(...middlewares));
 
-const reselectDebugger = require('reselect-debugger-flipper').default;
-reselectDebugger.configure({
-  selectors,
-
-  /* to calculate input / outputs of selectors */
-  stateGetter: store.getState,
-});
+if (__DEV__) {
+  const reselectDebugger = require('reselect-debugger-flipper');
+  reselectDebugger.configure({
+    selectors,
+  
+    /* for calculate input / outputs of selectors */
+    stateGetter: store.getState,
+  });
+}
 
 return store;
 ```
@@ -88,18 +92,15 @@ If recalculation has occurred, a property will be available that displays the la
 ```javascript
 import { createStore, applyMiddleware } from 'redux';
 
-import * as selectors from 'src/redux/selectors';
-
 const middlewares = [/* other middlewares */];
 
 if (__DEV__) {
-  const reselectDebugger = require('reselect-debugger-flipper').default;
+  const reselectDebugger = require('reselect-debugger-flipper');
 
-  /* to enable reselect debugger live updates */
+  /* for enable reselect debugger live updates */
   middlewares.push(reselectDebugger.reduxMiddleware);
 }
 ```
-
 
 ### Selectors Namespacing
 
